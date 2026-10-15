@@ -4,11 +4,14 @@
 
 ## 补丁
 
-| 文件 | 作用 |
-| --- | --- |
-| `patches/0001-bilibili-wbi-view.patch` | B 站元数据接口 `view` → `wbi/view`（旧接口对美国 IP 返回 412） |
-| `patches/0002-rss-twitter-images.patch` | X 订阅推送附带命中推文的配图（仅 `pbs.twimg.com`，每条 ≤2 张，每次 ≤4 张），含测试 |
+目前没有补丁：之前的两个都已被上游合并，从 v0.8.151 起直接用官方镜像 `ghcr.io/suink/diana:latest`。
 
+| 文件 | 作用 | 状态 |
+| --- | --- | --- |
+| `0001-bilibili-wbi-view.patch` | B 站元数据接口 `view` → `wbi/view`（旧接口对美国 IP 返回 412） | 上游 v0.8.151 已合并（SuInk/diana#1084），已删除 |
+| `0002-rss-twitter-images.patch` | X 订阅推送附带命中推文的配图 | 上游 v0.8.151 已合并（SuInk/diana#1093），已删除 |
+
+需要新补丁时，放到 `patches/`，文件名按 `NNNN-说明.patch` 编号。
 上游合并了哪个，就删掉对应的补丁文件。
 
 ## 编译

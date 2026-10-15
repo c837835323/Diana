@@ -58,7 +58,13 @@ jobs:
       - name: Apply patches
         working-directory: src
         run: |
-          for patch in ../patches-repo/patches/*.patch; do
+          shopt -s nullglob
+          patches=(../patches-repo/patches/*.patch)
+          if [ ${#patches[@]} -eq 0 ]; then
+            echo "::error::patches/ 里没有补丁，直接用官方镜像即可，无需编译"
+            exit 1
+          fi
+          for patch in "${patches[@]}"; do
             echo "== $patch"
             git apply --verbose "$patch"
           done
